@@ -1,0 +1,135 @@
+/* ============================================================
+   Чёрно-зелёная тема редактора
+   ============================================================ */
+:root{
+  --bg:#0d0d0d;
+  --panel:#1a1a1a;
+  --panel2:#141414;
+  --accent:#00ff88;
+  --accent-dim:rgba(0,255,136,.12);
+  --text:#e0e0e0;
+  --muted:#8a8a8a;
+  --border:#2a2a2a;
+  --danger:#ff5577;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;height:100%;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Inter","Segoe UI",Roboto,sans-serif;font-size:14px}
+button,input,select,textarea{font-family:inherit;font-size:inherit;color:inherit}
+a{color:var(--accent);text-decoration:none}
+
+/* ---------- Верхняя панель ---------- */
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px;background:var(--panel);border-bottom:1px solid var(--border);
+  position:sticky;top:0;z-index:10;
+}
+.brand{color:var(--accent);font-weight:700;letter-spacing:.5px}
+.actions{display:flex;gap:8px}
+.btn{
+  background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  padding:8px 14px;border-radius:8px;cursor:pointer;transition:.15s;
+}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-accent{background:var(--accent);color:#001a0e;border-color:var(--accent);font-weight:600}
+.btn-accent:hover{background:#00e07a;color:#001a0e}
+.btn-danger:hover{border-color:var(--danger);color:var(--danger)}
+
+/* ---------- Layout ---------- */
+.layout{display:grid;grid-template-columns:280px 1fr;height:calc(100vh - 58px)}
+.sidebar{
+  background:var(--panel);border-right:1px solid var(--border);
+  padding:16px;overflow-y:auto;
+}
+.sidebar h4{margin:0 0 12px;color:var(--muted);font-size:12px;
+  text-transform:uppercase;letter-spacing:1px}
+.sidebar ul{list-style:none;margin:0;padding:0}
+.sidebar li{
+  padding:9px 12px;border-radius:8px;cursor:pointer;margin-bottom:4px;
+  border:1px solid transparent;transition:.15s;font-size:13px;
+}
+.sidebar li:hover{background:var(--panel2);border-color:var(--border)}
+.sidebar li.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
+.sidebar li small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+
+/* ---------- Основная область ---------- */
+.editor{padding:20px 28px;overflow-y:auto}
+.meta{display:grid;grid-template-columns:1fr 1fr 160px;gap:12px;margin-bottom:20px}
+.meta label{display:flex;flex-direction:column;gap:6px;font-size:12px;color:var(--muted)}
+.meta label:nth-child(4){grid-column:1/-1}
+.meta input[type=text],
+.meta input[type=date]{
+  background:var(--panel2);border:1px solid var(--border);color:var(--text);
+  padding:10px 12px;border-radius:8px;outline:none;transition:.15s;
+}
+.meta input:focus{border-color:var(--accent)}
+.cover-row{display:flex;gap:8px;align-items:center}
+.cover-row input[type=text]{flex:1}
+
+/* ---------- Блоки ---------- */
+.blocks{margin-bottom:24px}
+.block{
+  background:var(--panel);border:1px solid var(--border);border-radius:10px;
+  padding:12px;margin-bottom:12px;position:relative;
+}
+.block-header{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:10px;font-size:12px;color:var(--muted);
+}
+.block-type{color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.block-controls{display:flex;gap:4px}
+.block-controls button{
+  background:var(--panel2);border:1px solid var(--border);color:var(--muted);
+  width:26px;height:26px;border-radius:6px;cursor:pointer;line-height:1;padding:0;
+}
+.block-controls button:hover{color:var(--accent);border-color:var(--accent)}
+.block-controls button.del:hover{color:var(--danger);border-color:var(--danger)}
+
+.block input[type=text],
+.block input[type=url],
+.block textarea,
+.block select{
+  width:100%;background:var(--panel2);border:1px solid var(--border);
+  color:var(--text);padding:8px 10px;border-radius:6px;outline:none;
+}
+.block textarea{resize:vertical;min-height:70px;font-family:inherit;line-height:1.5}
+.block input:focus,.block textarea:focus{border-color:var(--accent)}
+.block .row{display:flex;gap:8px;margin-bottom:8px}
+.block .row:last-child{margin-bottom:0}
+.block audio{width:100%;margin-top:8px}
+.block img.preview{max-height:180px;border-radius:6px;margin-top:8px;border:1px solid var(--border)}
+.list-items{display:flex;flex-direction:column;gap:6px}
+.list-items .li-row{display:flex;gap:6px}
+.list-items .li-row input{flex:1}
+.list-items .li-row button{
+  background:var(--panel2);border:1px solid var(--border);color:var(--muted);
+  width:32px;border-radius:6px;cursor:pointer;
+}
+.list-items .li-row button:hover{color:var(--danger);border-color:var(--danger)}
+
+/* ---------- Панель добавления ---------- */
+.add-block{
+  display:flex;gap:8px;padding:12px;background:var(--panel);
+  border:1px dashed var(--border);border-radius:10px;
+}
+.add-block select{
+  flex:1;background:var(--panel2);border:1px solid var(--border);
+  color:var(--text);padding:8px 10px;border-radius:8px;outline:none;
+}
+
+/* ---------- Подсказка ---------- */
+.empty-hint{
+  text-align:center;color:var(--muted);padding:40px;
+  border:1px dashed var(--border);border-radius:10px;margin-top:12px;
+}
+.hidden{display:none !important}
+
+/* ---------- Тост ---------- */
+.toast{
+  position:fixed;bottom:24px;right:24px;background:var(--accent);color:#001a0e;
+  padding:12px 20px;border-radius:8px;font-weight:600;
+  transform:translateY(120%);transition:transform .25s;z-index:100;
+  box-shadow:0 8px 30px rgba(0,255,136,.25);
+}
+.toast.show{transform:translateY(0)}
+.toast.error{background:var(--danger);color:#fff;box-shadow:0 8px 30px rgba(255,85,119,.3)}

@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hive - GameDevelopment — статьи</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<style>
+/* ============ Тёмная чёрно-зелёная тема ============ */
+:root{
+  --bg:#0d0d0d; --panel:#1a1a1a; --panel2:#141414;
+  --accent:#00ff88; --text:#e0e0e0; --muted:#8a8a8a; --border:#2a2a2a;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Inter","Segoe UI",Roboto,sans-serif;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;display:block;border-radius:8px}
+
+header.top{
+  position:sticky;top:0;z-index:20;display:flex;gap:12px;align-items:center;
+  padding:12px 20px;background:var(--panel);border-bottom:1px solid var(--border);
+}
+header.top .brand{font-weight:700;color:var(--accent);letter-spacing:.5px;white-space:nowrap}
+header.top .search{flex:1}
+header.top input[type=search]{
+  width:100%;padding:10px 14px;background:var(--panel2);color:var(--text);
+  border:1px solid var(--border);border-radius:8px;outline:none;font-size:14px;
+}
+header.top input[type=search]:focus{border-color:var(--accent)}
+.burger{display:none;background:transparent;border:1px solid var(--border);
+  color:var(--text);padding:8px 12px;border-radius:8px;cursor:pointer}
+
+.layout{display:grid;grid-template-columns:260px 1fr;min-height:calc(100vh - 61px)}
+aside.side{background:var(--panel);border-right:1px solid var(--border);padding:16px}
+aside.side h4{margin:0 0 8px;color:var(--muted);font-size:12px;
+  text-transform:uppercase;letter-spacing:1px}
+aside.side ul{list-style:none;padding:0;margin:0 0 18px}
+aside.side li a{display:block;padding:8px 10px;border-radius:6px;color:var(--text);font-size:14px}
+aside.side li a:hover,aside.side li a.active{background:rgba(0,255,136,.08);color:var(--accent);text-decoration:none}
+
+main{padding:24px 32px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;transition:transform .15s,border-color .15s;color:var(--text)}
+.card:hover{transform:translateY(-3px);border-color:var(--accent);text-decoration:none}
+.card .card-cover{width:100%;height:140px;object-fit:cover;border-radius:0}
+.card .card-cover.placeholder{background:linear-gradient(135deg,#1a1a1a,#0f1f18)}
+.card .card-body{padding:12px 14px}
+.card h3{margin:4px 0;font-size:16px;color:var(--text)}
+.card .cat{color:var(--accent);font-size:12px;text-transform:uppercase;letter-spacing:1px}
+.card time{color:var(--muted);font-size:12px}
+
+/* Статья (полный вид) */
+.article{display:none;max-width:820px;margin:0 auto;padding:24px 0 80px}
+.article.active{display:block}
+.article-header{margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:16px}
+.article-header h1{margin:8px 0 0;font-size:32px;color:#fff}
+.article-cover{width:100%;max-height:420px;object-fit:cover;border-radius:12px;margin-bottom:16px}
+.article-meta{display:flex;gap:12px;align-items:center;font-size:13px}
+.article-meta .cat{color:var(--accent);text-transform:uppercase;letter-spacing:1px}
+.article-meta time{color:var(--muted)}
+.article-body h2{margin-top:32px;color:#fff;border-left:3px solid var(--accent);padding-left:12px}
+.article-body h3{margin-top:24px;color:#fff}
+.article-body blockquote{margin:20px 0;padding:12px 20px;border-left:3px solid var(--accent);
+  background:var(--panel);color:#c8c8c8;font-style:italic;border-radius:0 8px 8px 0}
+.article-body ul{padding-left:22px}
+.article-body pre{background:#111;border:1px solid var(--border);border-radius:10px;
+  padding:16px;overflow:auto;font-size:13px}
+.article-body code{font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace}
+.article-body figure{margin:20px 0;text-align:center}
+.article-body figcaption{color:var(--muted);font-size:13px;margin-top:6px}
+.article-body audio{width:100%;margin:12px 0}
+.video-wrap{position:relative;padding-bottom:56.25%;height:0;margin:20px 0;border-radius:10px;overflow:hidden}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.back-link{display:inline-block;margin-bottom:16px;color:var(--muted)}
+.back-link:hover{color:var(--accent)}
+
+.empty{color:var(--muted);text-align:center;padding:60px 20px}
+
+@media (max-width:820px){
+  .layout{grid-template-columns:1fr}
+  aside.side{position:fixed;left:0;top:61px;bottom:0;width:250px;
+    transform:translateX(-100%);transition:transform .2s;z-index:15;overflow-y:auto}
+  aside.side.open{transform:translateX(0)}
+  .burger{display:inline-block}
+  main{padding:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <button class="burger" id="burger" aria-label="Меню">☰</button>
+  <div class="brand">Hive - GameDevelopment</div>
+  <div class="search">
+    <input type="search" id="search" placeholder="Поиск статей…">
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="side" id="sidebar">
+    <h4>Категории</h4>
+    <ul id="cats">
+      <li><a href="#" data-cat="" class="active">Все статьи</a></li>
+      <li><a href="#" data-cat="Профессионалы/Разработка виртуальных миров">Профессионалы/Разработка виртуальных миров</a></li>
+    </ul>
+  </aside>
+
+  <main>
+    <section id="list">
+      <div class="grid" id="grid">
+        
+      <a class="card" href="#article-b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e" data-id="b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e" data-cat="Профессионалы/Разработка виртуальных миров" data-title="создание проекта">
+        <div class="card-cover placeholder"></div>
+        <div class="card-body">
+          <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+          <h3>Создание проекта</h3>
+          <time>2026-09-19</time>
+        </div>
+      </a>
+      <a class="card" href="#article-8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8" data-id="8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8" data-cat="Профессионалы/Разработка виртуальных миров" data-title="настройка проекта под vr">
+        <div class="card-cover placeholder"></div>
+        <div class="card-body">
+          <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+          <h3>Настройка проекта под VR</h3>
+          <time>2026-09-19</time>
+        </div>
+      </a>
+      <a class="card" href="#article-449515ef-4562-460d-bb92-f2449ac29e5c" data-id="449515ef-4562-460d-bb92-f2449ac29e5c" data-cat="Профессионалы/Разработка виртуальных миров" data-title="софт и сайты для работы">
+        <div class="card-cover placeholder"></div>
+        <div class="card-body">
+          <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+          <h3>Софт и сайты для работы</h3>
+          <time>2026-09-19</time>
+        </div>
+      </a>
+      </div>
+      <div class="empty" id="listEmpty" style="display:none">Ничего не найдено</div>
+    </section>
+
+    <section id="reader">
+      <a class="back-link" href="#">← Ко всем статьям</a>
+      
+        <article class="article" id="article-b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e" data-id="b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e">
+          <header class="article-header">
+            
+            <div class="article-meta">
+              <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+              <time>2026-09-19</time>
+            </div>
+            <h1>Создание проекта</h1>
+          </header>
+          <div class="article-body">
+            <p>На профессионалах не разрешается использовать VR Template, потому что это слишком легко, поэтому создаем обычный проект Universal 3D</p>
+<figure><img src="uploads/1789806338843-Photo1.png" alt=""></figure>
+          </div>
+        </article>
+
+        <article class="article" id="article-8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8" data-id="8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8">
+          <header class="article-header">
+            
+            <div class="article-meta">
+              <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+              <time>2026-09-19</time>
+            </div>
+            <h1>Настройка проекта под VR</h1>
+          </header>
+          <div class="article-body">
+            <p>Так как не разрешается использовать Vr Template придется настраивать проект под VR вручную, это наверное самое важное, что нужно знать, иначе не получится получить практически 90% баллов в модуле B.</p>
+          </div>
+        </article>
+
+        <article class="article" id="article-449515ef-4562-460d-bb92-f2449ac29e5c" data-id="449515ef-4562-460d-bb92-f2449ac29e5c">
+          <header class="article-header">
+            
+            <div class="article-meta">
+              <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+              <time>2026-09-19</time>
+            </div>
+            <h1>Софт и сайты для работы</h1>
+          </header>
+          <div class="article-body">
+            <ul><li>Unity Engine - для самой разработки</li><li>Blender - для возможного редактирования 3д моделей или создания с нуля</li><li>Figma - для 2д дизайна</li><li>Mixamo - для создания анимаций (www.mixamo.com)</li><li>Freetts - генерация аудио по тексту (freetts.ru)</li><li>Zvukogram - библиотека различных звуков и музыки (zvukogram.com/category)</li></ul>
+          </div>
+        </article>
+    </section>
+  </main>
+</div>
+
+<script id="articles-data" type="application/json">[{"id":"b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e","title":"Создание проекта","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"На профессионалах не разрешается использовать VR Template, потому что это слишком легко, поэтому создаем обычный проект Universal 3D"},{"type":"img","url":"/uploads/1789806338843-Photo1.png"}]},{"id":"8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8","title":"Настройка проекта под VR","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"Так как не разрешается использовать Vr Template придется настраивать проект под VR вручную, это наверное самое важное, что нужно знать, иначе не получится получить практически 90% баллов в модуле B."}]},{"id":"449515ef-4562-460d-bb92-f2449ac29e5c","title":"Софт и сайты для работы","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"list","items":["Unity Engine - для самой разработки","Blender - для возможного редактирования 3д моделей или создания с нуля","Figma - для 2д дизайна","Mixamo - для создания анимаций (www.mixamo.com)","Freetts - генерация аудио по тексту (freetts.ru)","Zvukogram - библиотека различных звуков и музыки (zvukogram.com/category)"]}]}]</script>
+<script>
+// ============ Хеш-роутинг без сервера ============
+(function(){
+  const listEl = document.getElementById('list');
+  const readerEl = document.getElementById('reader');
+  const articles = Array.from(document.querySelectorAll('.article'));
+  const cards = Array.from(document.querySelectorAll('.card'));
+
+  function show(id){
+    if(!id){
+      listEl.style.display = '';
+      readerEl.querySelectorAll('.article.active').forEach(a=>a.classList.remove('active'));
+      document.title = 'Hive - GameDevelopment — статьи';
+      window.scrollTo({top:0});
+      return;
+    }
+    listEl.style.display = 'none';
+    readerEl.querySelectorAll('.article').forEach(a=>a.classList.remove('active'));
+    const art = document.getElementById('article-'+id);
+    if(art){
+      art.classList.add('active');
+      const t = art.querySelector('h1');
+      document.title = (t?t.textContent:'Статья') + ' — Hive - GameDevelopment';
+      window.scrollTo({top:0});
+    } else {
+      listEl.style.display = '';
+    }
+  }
+
+  function route(){
+    const h = location.hash.replace(/^#/,'');
+    if(h.startsWith('article-')) show(h.slice('article-'.length));
+    else show('');
+  }
+  window.addEventListener('hashchange', route);
+  route();
+
+  // Подсветка кода
+  if(window.hljs) document.querySelectorAll('pre code').forEach(el=>hljs.highlightElement(el));
+
+  // Бургер
+  const burger = document.getElementById('burger');
+  const sidebar = document.getElementById('sidebar');
+  burger && burger.addEventListener('click', ()=>sidebar.classList.toggle('open'));
+
+  // Категории
+  document.querySelectorAll('#cats a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      document.querySelectorAll('#cats a').forEach(x=>x.classList.remove('active'));
+      a.classList.add('active');
+      filter();
+      sidebar.classList.remove('open');
+    });
+  });
+  function activeCat(){
+    const a = document.querySelector('#cats a.active');
+    return a ? (a.dataset.cat || '') : '';
+  }
+
+  // Поиск
+  const search = document.getElementById('search');
+  search && search.addEventListener('input', filter);
+
+  function filter(){
+    const q = (search?.value || '').trim().toLowerCase();
+    const cat = activeCat();
+    let visible = 0;
+    cards.forEach(c=>{
+      const okCat = !cat || c.dataset.cat === cat;
+      const okQ = !q || c.dataset.title.includes(q);
+      const ok = okCat && okQ;
+      c.style.display = ok ? '' : 'none';
+      if(ok) visible++;
+    });
+    document.getElementById('listEmpty').style.display = visible ? 'none' : '';
+  }
+})();
+</script>
+</body>
+</html>
