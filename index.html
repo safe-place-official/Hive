@@ -138,6 +138,14 @@ main{padding:24px 32px}
           <time>2026-09-19</time>
         </div>
       </a>
+      <a class="card" href="#article-5e431cd0-1d92-49cc-a43b-5c86932e8e8d" data-id="5e431cd0-1d92-49cc-a43b-5c86932e8e8d" data-cat="Профессионалы/Разработка виртуальных миров" data-title="трансляций геймплея проекта из юнити в vr гарнитуру">
+        <div class="card-cover placeholder"></div>
+        <div class="card-body">
+          <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+          <h3>Трансляций геймплея проекта из юнити в VR гарнитуру</h3>
+          <time>2026-09-20</time>
+        </div>
+      </a>
       </div>
       <div class="empty" id="listEmpty" style="display:none">Ничего не найдено</div>
     </section>
@@ -171,6 +179,30 @@ main{padding:24px 32px}
           </header>
           <div class="article-body">
             <p>Так как не разрешается использовать Vr Template придется настраивать проект под VR вручную, это наверное самое важное, что нужно знать, иначе не получится получить практически 90% баллов в модуле B.</p>
+<h3>Установка ассетов для VR</h3>
+<figure><img src="uploads/1789899854335-__________________________2026-09-19_124.png" alt="Открываем Package Manager "><figcaption>Открываем Package Manager </figcaption></figure>
+<p>Для работы VR понадобятся следующие ассеты:</p>
+<ul><li>OpenXR Plugin</li><li>Unity OpenXR Meta</li><li>XR Interaction Toolkit</li><li>XR Plugin Management</li></ul>
+<figure><img src="uploads/1789900463937-__________________________2026-09-20_143.png" alt="Переходим в Package Manager > Sources > Unity Registry и скачиваем все по списку"><figcaption>Переходим в Package Manager &gt; Sources &gt; Unity Registry и скачиваем все по списку</figcaption></figure>
+<h3>Настраиваем проект</h3>
+<p>Открываем Project Settings</p>
+<figure><img src="uploads/1789901001798-__________________________2026-09-20_144.png" alt=""></figure>
+<p>Переходим в XR Plug-in Management включаем OpenXR для Windows и для Android</p>
+<figure><img src="uploads/1789901253409-__________________________2026-09-20_144.png" alt=""></figure>
+<figure><img src="uploads/1789901286454-__________________________2026-09-20_144.png" alt=""></figure>
+<p>Переходим в XR Plug-in Management &gt; OpenXR &gt; Enable Interaction Profiles и включаем оба профайла для Meta если VR очки Quest 3 или Quest 3s и включаем профайл для Oculus если очки Quest 2</p>
+<figure><img src="uploads/1789903088210-__________________________2026-09-20_151.png" alt=""></figure>
+<p>Переходим в XR Plug-in Management &gt; Project Validation &gt; Validation Rules и нажимаем кнопку Fix All. Также выключаем Selected Profiles, если он включен</p>
+<figure><img src="uploads/1789904143608-__________________________2026-09-20_145.png" alt=""></figure>
+<p>Переходим в Edit &gt; Build Profiles</p>
+<figure><img src="uploads/1789904465202-__________________________2026-09-20_154.png" alt=""></figure>
+<p>Нажимаем Add Build Profile</p>
+<figure><img src="uploads/1789904620875-__________________________2026-09-20_154.png" alt=""></figure>
+<p>Добавляем профайл с Android </p>
+<figure><img src="uploads/1789904689117-__________________________2026-09-20_154.png" alt=""></figure>
+<p>В профайле в графе Run Device выбираем подключенную VR гарнитуру</p>
+<figure><img src="uploads/1789905051604-__________________________2026-09-20_154.png" alt=""></figure>
+<p>На этом все, проект полностью настроен под VR использование</p>
           </div>
         </article>
 
@@ -187,11 +219,25 @@ main{padding:24px 32px}
             <ul><li>Unity Engine - для самой разработки</li><li>Blender - для возможного редактирования 3д моделей или создания с нуля</li><li>Figma - для 2д дизайна</li><li>Mixamo - для создания анимаций (www.mixamo.com)</li><li>Freetts - генерация аудио по тексту (freetts.ru)</li><li>Zvukogram - библиотека различных звуков и музыки (zvukogram.com/category)</li></ul>
           </div>
         </article>
+
+        <article class="article" id="article-5e431cd0-1d92-49cc-a43b-5c86932e8e8d" data-id="5e431cd0-1d92-49cc-a43b-5c86932e8e8d">
+          <header class="article-header">
+            
+            <div class="article-meta">
+              <span class="cat">Профессионалы/Разработка виртуальных миров</span>
+              <time>2026-09-20</time>
+            </div>
+            <h1>Трансляций геймплея проекта из юнити в VR гарнитуру</h1>
+          </header>
+          <div class="article-body">
+            
+          </div>
+        </article>
     </section>
   </main>
 </div>
 
-<script id="articles-data" type="application/json">[{"id":"b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e","title":"Создание проекта","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"На профессионалах не разрешается использовать VR Template, потому что это слишком легко, поэтому создаем обычный проект Universal 3D"},{"type":"img","url":"/uploads/1789806338843-Photo1.png"}]},{"id":"8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8","title":"Настройка проекта под VR","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"Так как не разрешается использовать Vr Template придется настраивать проект под VR вручную, это наверное самое важное, что нужно знать, иначе не получится получить практически 90% баллов в модуле B."}]},{"id":"449515ef-4562-460d-bb92-f2449ac29e5c","title":"Софт и сайты для работы","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"list","items":["Unity Engine - для самой разработки","Blender - для возможного редактирования 3д моделей или создания с нуля","Figma - для 2д дизайна","Mixamo - для создания анимаций (www.mixamo.com)","Freetts - генерация аудио по тексту (freetts.ru)","Zvukogram - библиотека различных звуков и музыки (zvukogram.com/category)"]}]}]</script>
+<script id="articles-data" type="application/json">[{"id":"b9c7c8c0-1e3d-4121-b9d6-553eec05bf2e","title":"Создание проекта","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"На профессионалах не разрешается использовать VR Template, потому что это слишком легко, поэтому создаем обычный проект Universal 3D"},{"type":"img","url":"/uploads/1789806338843-Photo1.png"}]},{"id":"8fd52bcb-fa0d-4f03-90b3-fd2cf45e4ab8","title":"Настройка проекта под VR","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"p","text":"Так как не разрешается использовать Vr Template придется настраивать проект под VR вручную, это наверное самое важное, что нужно знать, иначе не получится получить практически 90% баллов в модуле B."},{"type":"h3","text":"Установка ассетов для VR"},{"type":"img","url":"uploads/1789899854335-__________________________2026-09-19_124.png","caption":"Открываем Package Manager "},{"type":"p","text":"Для работы VR понадобятся следующие ассеты:"},{"type":"list","items":["OpenXR Plugin","Unity OpenXR Meta","XR Interaction Toolkit","XR Plugin Management"]},{"type":"img","url":"uploads/1789900463937-__________________________2026-09-20_143.png","caption":"Переходим в Package Manager > Sources > Unity Registry и скачиваем все по списку"},{"type":"h3","text":"Настраиваем проект"},{"type":"p","text":"Открываем Project Settings"},{"type":"img","url":"uploads/1789901001798-__________________________2026-09-20_144.png"},{"type":"p","text":"Переходим в XR Plug-in Management включаем OpenXR для Windows и для Android"},{"type":"img","url":"uploads/1789901253409-__________________________2026-09-20_144.png"},{"type":"img","url":"uploads/1789901286454-__________________________2026-09-20_144.png"},{"type":"p","text":"Переходим в XR Plug-in Management > OpenXR > Enable Interaction Profiles и включаем оба профайла для Meta если VR очки Quest 3 или Quest 3s и включаем профайл для Oculus если очки Quest 2"},{"type":"img","url":"uploads/1789903088210-__________________________2026-09-20_151.png"},{"type":"p","text":"Переходим в XR Plug-in Management > Project Validation > Validation Rules и нажимаем кнопку Fix All. Также выключаем Selected Profiles, если он включен"},{"type":"img","url":"uploads/1789904143608-__________________________2026-09-20_145.png"},{"type":"p","text":"Переходим в Edit > Build Profiles"},{"type":"img","url":"uploads/1789904465202-__________________________2026-09-20_154.png"},{"type":"p","text":"Нажимаем Add Build Profile"},{"type":"img","url":"uploads/1789904620875-__________________________2026-09-20_154.png"},{"type":"p","text":"Добавляем профайл с Android "},{"type":"img","url":"uploads/1789904689117-__________________________2026-09-20_154.png"},{"type":"p","text":"В профайле в графе Run Device выбираем подключенную VR гарнитуру"},{"type":"img","url":"uploads/1789905051604-__________________________2026-09-20_154.png"},{"type":"p","text":"На этом все, проект полностью настроен под VR использование"}]},{"id":"449515ef-4562-460d-bb92-f2449ac29e5c","title":"Софт и сайты для работы","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-19","cover":"","blocks":[{"type":"list","items":["Unity Engine - для самой разработки","Blender - для возможного редактирования 3д моделей или создания с нуля","Figma - для 2д дизайна","Mixamo - для создания анимаций (www.mixamo.com)","Freetts - генерация аудио по тексту (freetts.ru)","Zvukogram - библиотека различных звуков и музыки (zvukogram.com/category)"]}]},{"id":"5e431cd0-1d92-49cc-a43b-5c86932e8e8d","title":"Трансляций геймплея проекта из юнити в VR гарнитуру","category":"Профессионалы/Разработка виртуальных миров","date":"2026-09-20","cover":"","blocks":[]}]</script>
 <script>
 // ============ Хеш-роутинг без сервера ============
 (function(){
